@@ -1,6 +1,4 @@
-import type { Denops } from "https://deno.land/x/denops_std@v5.0.2/mod.ts";
-import { execute } from "https://deno.land/x/denops_std@v5.0.2/helper/mod.ts";
-import * as fn from "https://deno.land/x/denops_std@v5.0.2/function/mod.ts";
+import { Denops, helper, fn } from './deps.ts';
 
 export async function main(denops: Denops): Promise<void> {
   denops.dispatcher = {
@@ -16,7 +14,7 @@ export async function main(denops: Denops): Promise<void> {
       return '>';
     }
   }
-  await execute (
+  await helper.execute (
     denops,
     `
       inoremap >> <C-r>=denops#request('${denops.name}', 'autoclose_tag', [])<CR>
